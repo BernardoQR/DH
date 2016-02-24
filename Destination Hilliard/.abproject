@@ -1,0 +1,28 @@
+{
+  "ProjectName": "Destination Hilliard",
+  "ProjectGuid": "ca05e865-1e0d-4204-be1b-6227a73137db",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.DestinationHilliard",
+  "DisplayName": "Destination Hilliard",
+  "Author": "",
+  "Description": "Destination Hilliard",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "FrameworkVersion": "1.5.2",
+  "Framework": "NativeScript"
+}
