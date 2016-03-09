@@ -4,9 +4,6 @@ var isInit = true,
     service = require('./itineraries2-service'),
     // additional requires
     viewModel = require('./itineraries2-view-model');
-var observableArrayModule = require("data/observable-array");
-
-
 function pageLoaded(args) {
     var page = args.object;
 
@@ -47,11 +44,10 @@ function pageLoaded(args) {
 
 
 function onListViewItemTap(args) {
-    viewModel.set('isLoading', true);
     var itemsList = [];
     var temp = [];
     itemsList = GetListItems();
-    var itemData = viewModel.get('listItems')[args.index];
+    var itemData = itemsList[args.index];
 
     var ChildItems = [];
     service.getDynamicContent(itemData.itineraryId)
@@ -70,6 +66,8 @@ function onListViewItemTap(args) {
         			    temp.push(itemsList[args.index]);
         			    viewModel.set('listItems', "");
         			    viewModel.set('listItems', itemsList);
+        			    viewModel.set('SubListItems', ChildItems);
+
         			})
          .catch(function onCatch() {
              //viewModel.set('isLoading', false);
@@ -79,7 +77,16 @@ function onListViewItemTap(args) {
 
 
 function onDetailItemTap(args) {
-    alert("AAAAAAAAAA")
+    var subItemsList = GetSubListItems();
+    var subItemData = subItemsList[args.index];
+    alert(subItemData.pointOfInterestTitle);
+
+}
+
+function GetSubListItems() {
+    var subItemsList = [];
+    subItemsList = viewModel.get('SubListItems');
+    return subItemsList;
 }
 
 function GetListItems() {
