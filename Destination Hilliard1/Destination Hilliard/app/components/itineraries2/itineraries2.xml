@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
+  <Page.actionBar>
+    <widgets:action-bar />
+  </Page.actionBar>
+
+
+
+  <ListView items="{{ listItems }}" itemTap="onListViewItemTap">
+    <ListView.itemTemplate>
+      <StackLayout>
+        <Label text="{{ itineraryTitle }}"   cssClass="title-label"/>
+        <Label text="{{ itineraryDescription }}"  visibility="{{ visibility}}" />
+        <ListView items="{{ itineraryItems }}" itemTap="onDetailItemTap"  >
+          <ListView.itemTemplate row="2" >
+            <StackLayout>
+              <Label text="{{ pointOfInterestTitle }}"  cssClass="title-label" />
+              <Label text="{{ pointOfInterestDescription }}" />
+            </StackLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </StackLayout>
+    </ListView.itemTemplate>
+  </ListView>
+</Page>
