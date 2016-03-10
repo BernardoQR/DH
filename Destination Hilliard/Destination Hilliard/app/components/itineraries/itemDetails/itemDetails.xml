@@ -1,20 +1,15 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" navigatedTo="navigatedTo">
-    <Page.actionBar>
-        <widgets:action-bar />
-    </Page.actionBar>
+  <Page.actionBar>
+    <widgets:action-bar />
+  </Page.actionBar>
 
-    <GridLayout rows="auto, *">
-        <GridLayout rows="auto" columns="*, *">
-
-
-        </GridLayout>
-        <StackLayout row="1">
-
-
-            <Label text="{{ Description }}" />
-
-
-            <!-- additional view content -->
-        </StackLayout>
-    </GridLayout>
+  <StackLayout row="1">
+    <image src="{{ pointOfInterestImageUrl }}" resize="w:160,h:160,fill:cover"></image>
+    <Label text="{{ pointOfInterestTitle }}"   cssClass="title-label"/>
+    <StackLayout row="1">
+      <Label text="{{ pointOfInterestTelephone }}" />
+    </StackLayout>
+    <Label text="{{ pointOfInterestAddress }}"  />
+    <Label text="{{ pointOfInterestDescription }}" />
+  </StackLayout>
 </Page>

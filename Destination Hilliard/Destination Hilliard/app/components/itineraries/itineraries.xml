@@ -14,10 +14,12 @@
           <ListView.itemTemplate row="2" >
             <StackLayout>
               <Label text="{{ pointOfInterestTitle }}"  cssClass="title-label" />
+              <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
               <Label text="{{ pointOfInterestDescription }}" />
             </StackLayout>
           </ListView.itemTemplate>
         </ListView>
+        
       </StackLayout>
     </ListView.itemTemplate>
   </ListView>
