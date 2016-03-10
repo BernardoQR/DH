@@ -1,0 +1,124 @@
+{
+  "type": "NativeScript",
+  "views": [
+    {
+      "type": "NativeScript:view",
+      "name": "homeView",
+      "components": [],
+      "title": "Home View",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "placesToEat",
+      "components": [],
+      "title": "Places To Eat",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "placesToStay",
+      "components": [],
+      "title": "Places To Stay",
+      "addToNavigation": true,
+      "icon": "organize"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "thingsToDo",
+      "components": [],
+      "title": "Things To Do",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "itineraries",
+      "components": [
+        {
+          "type": "NativeScript:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [],
+          "name": "itinerariesModel",
+          "dataProvider": "destinationHilliard",
+          "collection": "Category",
+          "headerField": "Title",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "detailHeaderField": "Description",
+          "addItemForm": false,
+          "editItemForm": false
+        }
+      ],
+      "title": "Itineraries",
+      "addToNavigation": true,
+      "icon": "organize"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "events",
+      "components": [],
+      "title": "Events",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "contactUs",
+      "components": [],
+      "title": "Contact Us",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "map",
+      "components": [],
+      "title": "Map",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "NativeScript:view",
+      "name": "itineraries2",
+      "components": [
+        {
+          "type": "NativeScript:editableList",
+          "listExtraFields": [],
+          "detailExtraFields": [],
+          "components": [],
+          "name": "itineraries2Model",
+          "dataProvider": "destinationHilliard",
+          "collection": "Category",
+          "headerField": "Title",
+          "pullToRefresh": false,
+          "endlessScroll": false,
+          "deleteItemButton": false,
+          "addItemForm": false,
+          "editItemForm": false
+        }
+      ],
+      "title": "Itineraries",
+      "addToNavigation": true,
+      "icon": "organize"
+    }
+  ],
+  "dataProviders": [
+    {
+      "type": "NativeScript:dataProvider",
+      "name": "destinationHilliard",
+      "title": "Destination Hilliard / Destination Hilliard",
+      "source": "everlive",
+      "everliveKey": "lt3c280403rhmq8t",
+      "offlineStorage": false
+    }
+  ],
+  "name": "nativeScriptApp",
+  "navigation": "listmenu",
+  "transition": "none",
+  "skin": "native"
+}

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>ca05e865-1e0d-4204-be1b-6227a73137db</ProjectGuid>
+    <ProjectName>Destination Hilliard</ProjectName>
+    <ProjectTypeGuids>{F0A65104-D4F4-4012-B799-F612D75820F6}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " />
+  <ItemGroup>
+    <Content Include=".abignore" />
+    <Content Include=".abproject" />
+    <Content Include=".app.json" />
+    <Content Include=".yo-rc.json" />
+    <Content Include="app\app.css" />
+    <Content Include="app\app.js" />
+    <Content Include="app\components\contactUs\contactUs-service.js" />
+    <Content Include="app\components\contactUs\contactUs-view-model.js" />
+    <Content Include="app\components\contactUs\contactUs.js" />
+    <Content Include="app\components\contactUs\contactUs.xml" />
+    <Content Include="app\components\events\events-service.js" />
+    <Content Include="app\components\events\events-view-model.js" />
+    <Content Include="app\components\events\events.js" />
+    <Content Include="app\components\events\events.xml" />
+    <Content Include="app\components\homeView\homeView-service.js" />
+    <Content Include="app\components\homeView\homeView-view-model.js" />
+    <Content Include="app\components\homeView\homeView.js" />
+    <Content Include="app\components\homeView\homeView.xml" />
+    <Content Include="app\components\itineraries2\itemDetails\itemDetails.js" />
+    <Content Include="app\components\itineraries2\itemDetails\itemDetails.xml" />
+    <Content Include="app\components\itineraries2\itineraries2-service.js" />
+    <Content Include="app\components\itineraries2\itineraries2-view-model.js" />
+    <Content Include="app\components\itineraries2\itineraries2.js" />
+    <Content Include="app\components\itineraries2\itineraries2.xml" />
+    <Content Include="app\components\itineraries\itemDetails\itemDetails.js" />
+    <Content Include="app\components\itineraries\itemDetails\itemDetails.xml" />
+    <Content Include="app\components\itineraries\itineraries-service.js" />
+    <Content Include="app\components\itineraries\itineraries-view-model.js" />
+    <Content Include="app\components\itineraries\itineraries.js" />
+    <Content Include="app\components\itineraries\itineraries.xml" />
+    <Content Include="app\components\map\map-service.js" />
+    <Content Include="app\components\map\map-view-model.js" />
+    <Content Include="app\components\map\map.js" />
+    <Content Include="app\components\map\map.xml" />
+    <Content Include="app\components\placesToEat\placesToEat-service.js" />
+    <Content Include="app\components\placesToEat\placesToEat-view-model.js" />
+    <Content Include="app\components\placesToEat\placesToEat.js" />
+    <Content Include="app\components\placesToEat\placesToEat.xml" />
+    <Content Include="app\components\placesToStay\placesToStay-service.js" />
+    <Content Include="app\components\placesToStay\placesToStay-view-model.js" />
+    <Content Include="app\components\placesToStay\placesToStay.js" />
+    <Content Include="app\components\placesToStay\placesToStay.xml" />
+    <Content Include="app\components\thingsToDo\thingsToDo-service.js" />
+    <Content Include="app\components\thingsToDo\thingsToDo-view-model.js" />
+    <Content Include="app\components\thingsToDo\thingsToDo.js" />
+    <Content Include="app\components\thingsToDo\thingsToDo.xml" />
+    <Content Include="app\dataProviders\destinationHilliard.js" />
+    <Content Include="app\everlive\everlive.all.min.js" />
+    <Content Include="app\fonts\kendoui.ttf" />
+    <Content Include="app\images\nativescript_logo.png" />
+    <Content Include="app\LICENSE" />
+    <Content Include="app\navigation\navigation-view-model.js" />
+    <Content Include="app\navigation\navigation.js" />
+    <Content Include="app\navigation\navigation.xml" />
+    <Content Include="app\package.json" />
+    <Content Include="app\utils\widgets\action-bar.js" />
+    <Content Include="app\utils\widgets\action-bar.xml" />
+    <Content Include="app\utils\widgets\button.android.xml" />
+    <Content Include="app\utils\widgets\button.ios.xml" />
+    <Content Include="app\utils\widgets\button.js" />
+    <Content Include="app\utils\widgets\helper.js" />
+    <Content Include="package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app\App_Resources\Android\drawable-hdpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-hdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-hdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-ldpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-mdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-xhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-xxhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-land-xxxhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-ldpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-ldpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-mdpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-mdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xhdpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xxhdpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xxhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xxxhdpi\icon.png" />
+    <Resource Include="app\App_Resources\Android\drawable-xxxhdpi\splashscreen.png" />
+    <Resource Include="app\App_Resources\iOS\Default-568h@2x.png" />
+    <Resource Include="app\App_Resources\iOS\Default-667h.png" />
+    <Resource Include="app\App_Resources\iOS\Default-736h.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Landscape-667h.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Landscape-736h.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Landscape.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Landscape@2x.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Portrait.png" />
+    <Resource Include="app\App_Resources\iOS\Default-Portrait@2x.png" />
+    <Resource Include="app\App_Resources\iOS\Default.png" />
+    <Resource Include="app\App_Resources\iOS\Default@2x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-40.png" />
+    <Resource Include="app\App_Resources\iOS\icon-40@2x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-40@3x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-60.png" />
+    <Resource Include="app\App_Resources\iOS\icon-60@2x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-60@3x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-72.png" />
+    <Resource Include="app\App_Resources\iOS\icon-72@2x.png" />
+    <Resource Include="app\App_Resources\iOS\icon-76.png" />
+    <Resource Include="app\App_Resources\iOS\icon-76@2x.png" />
+    <Resource Include="app\App_Resources\iOS\Icon-Small-50.png" />
+    <Resource Include="app\App_Resources\iOS\Icon-Small-50@2x.png" />
+    <Resource Include="app\App_Resources\iOS\Icon-Small.png" />
+    <Resource Include="app\App_Resources\iOS\Icon-Small@2x.png" />
+    <Resource Include="app\App_Resources\iOS\icon.png" />
+    <Resource Include="app\App_Resources\iOS\icon@2x.png" />
+  </ItemGroup>
+  <Import Project="$(IceniumTargets)Build.targets" />
+</Project>
