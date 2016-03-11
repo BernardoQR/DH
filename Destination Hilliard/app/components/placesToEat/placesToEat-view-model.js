@@ -5,9 +5,15 @@ var ViewModel,
 
 ViewModel = new Observable({
 
-    pageTitle: 'Places To Eat',
+    pageTitle: 'Places to eat',
+
+    isLoading: false,
+    listItems: [],
+    SubListItems: []
     // additional properties
+
 });
+
 
 // START_CUSTOM_CODE_placesToEat
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes

@@ -44,7 +44,6 @@ function pageLoaded(args) {
 }
 
 
-
 function onListViewItemTap(args) {
     var itemsList = [];
     var temp = [];
