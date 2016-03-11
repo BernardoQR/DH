@@ -9,7 +9,8 @@
     "jquery-ui": "1.12.0-beta.1",
     "div": "0.4.1",
     "angular": "1.5.0",
-    "react-phone-number": "1.0.0"
+    "react-phone-number": "1.0.0",
+    "nativescript-mapbox": "1.1.0"
   },
   "devDependencies": {}
 }

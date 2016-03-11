@@ -1,22 +1,28 @@
 'use strict';
 var isInit = true,
     helpers = require('../../utils/widgets/helper'),
-
     service = require('./itineraries-service'),
-    // additional requires
-
+    //mapbox = require("nativescript-mapbox"),
+    segmentedBarModule = require("ui/segmented-bar"),
     viewModel = require('./itineraries-view-model');
+
+function test(args) {
+   // alert("INNNNNN")
+}
+
+
 function pageLoaded(args) {
     viewModel.set('isLoading', true);
     var page = args.object;
-
+    viewModel.set('isLoading', true);
+    viewModel.set('listItems', []);
     helpers.platformInit(page);
 
     page.bindingContext = viewModel;
     var itemsList = [];
     service.getAllRecords()
         .then(function (result) {
-            
+
             result.forEach(function (item) {
                 flattenLocationProperties(item);
                 itemsList.push({
@@ -28,7 +34,7 @@ function pageLoaded(args) {
                 });
             });
             viewModel.set('listItems', itemsList);
-           
+
         })
         .catch(function onCatch() {
             //viewModel.set('isLoading', false);
@@ -85,7 +91,7 @@ function onDetailItemTap(args) {
     var subItemData = subItemsList[args.index];
 
     if (subItemData.pointOfInterestImage != null && subItemData.pointOfInterestImage != "") {
-       
+
         service.getImage(subItemData.pointOfInterestImage)
             .then(function (data) {
                 var ChildItems = [];
@@ -109,11 +115,11 @@ function onDetailItemTap(args) {
          .catch(function onCatch(ex) {
              alert(ex)
          });
-        
 
 
 
-       
+
+
     }
     else {
         helpers.navigate({

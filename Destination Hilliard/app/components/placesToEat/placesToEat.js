@@ -13,6 +13,9 @@ function pageLoaded(args) {
 
     page.bindingContext = viewModel;
     var itemsList = [];
+    viewModel.set('isLoading', true);
+    viewModel.set('listItems', []);
+
     service.getAllRecords()
         .then(function (result) {
 
