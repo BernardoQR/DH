@@ -1,41 +1,41 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets"  xmlns:maps="nativescript-google-maps-sdk"  loaded="pageLoaded">
   <Page.actionBar>
     <ActionBar title="{{ pageTitle }}">
       <NavigationButton ios.icon="res://ic_add_white" android.icon="res://ic_add_white_24dp" tap="onNavigateBack" />
     </ActionBar>
   </Page.actionBar>
 
-  <TabView>
-    <TabView.items>
-      <TabViewItem title="List">
-        <TabViewItem.view>
-          <ListView items="{{ listItems }}" itemTap="onListViewItemTap">
-            <ListView.itemTemplate>
+  <StackLayout>
+    <button text="List" ontap="ShowList" textWrap="true"></button>
+    <button text="Map" ontap="ShowMap"></button>
+    
+    <ListView items="{{ listItems }}" itemTap="onListViewItemTap"  visibility="{{ ListVisible }}"  >
+      <ListView.itemTemplate>
+        <StackLayout>
+          <Label text="{{ itineraryTitle }}"   cssClass="title-label"/>
+          <Label text="{{ itineraryDescription }}"  visibility="{{ visibility }}" />
+          <ListView items="{{ itineraryItems }}" itemTap="onDetailItemTap"  >
+            <ListView.itemTemplate >
               <StackLayout>
-                <Label text="{{ itineraryTitle }}"   cssClass="title-label"/>
-                <Label text="{{ itineraryDescription }}"  visibility="{{ visibility}}" />
-                <ListView items="{{ itineraryItems }}" itemTap="onDetailItemTap"  >
-                  <ListView.itemTemplate >
-                    <StackLayout>
-                      <Label text="{{ pointOfInterestTitle }}"  cssClass="title-label" />
-                      <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
-                      <Label text="{{ pointOfInterestDescription }}" />
-                    </StackLayout>
-                  </ListView.itemTemplate>
-                </ListView>
+                <Label text="{{ pointOfInterestTitle }}"  cssClass="title-label" />
+                <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
+                <Label text="{{ pointOfInterestDescription }}" />
               </StackLayout>
             </ListView.itemTemplate>
           </ListView>
-        </TabViewItem.view>
-      </TabViewItem>
-      <TabViewItem title="Map">
-        <TabViewItem.view>
-          <Label text="Label in Tab2" />
-        </TabViewItem.view>
-      </TabViewItem>
-    </TabView.items>
-  </TabView>
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
 
 
+
+    <Label text="MAP"   cssClass="title-label" visibility="{{ MapVisible }}" />
+
+   
+  </StackLayout>
+
+  
+  
+  
 
 </Page>

@@ -2,17 +2,31 @@
 var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     service = require('./itineraries-service'),
-    //mapbox = require("nativescript-mapbox"),
+    observable = require("data/observable"),
+    //mapbox = require("../../node_modules/nativescript-mapbox"),
     segmentedBarModule = require("ui/segmented-bar"),
     viewModel = require('./itineraries-view-model');
 
-function test(args) {
-   // alert("INNNNNN")
+
+//var mapsModule = require("nativescript-google-maps-sdk");
+
+function ShowList(eventData) {
+    viewModel.set('ListVisible', "visible");
+    viewModel.set('MapVisible', "collapsed");
+
+};
+
+
+
+
+function ShowMap(args) {
+    viewModel.set('ListVisible', "collapsed");
+    viewModel.set('MapVisible', "visible");
 }
 
 
+
 function pageLoaded(args) {
-    viewModel.set('isLoading', true);
     var page = args.object;
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);
@@ -177,3 +191,5 @@ function flattenLocationProperties(dataItem) {
 exports.pageLoaded = pageLoaded;
 exports.onListViewItemTap = onListViewItemTap;
 exports.onDetailItemTap = onDetailItemTap;
+exports.ShowMap = ShowMap;
+exports.ShowList = ShowList;

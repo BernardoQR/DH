@@ -7,7 +7,7 @@ function pageLoaded(args) {
 
     helpers.platformInit(page);
     page.bindingContext = navigationViewModel;
-    navigationViewModel.set('pageTitle', 'nativeScriptApp');
+    navigationViewModel.set('pageTitle', 'Destination Hilliard');
 }
 
 function menuItemTap(args) {
