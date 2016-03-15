@@ -4,9 +4,13 @@
   </Page.actionBar>
 
   <StackLayout row="1">
+
+    
+
     <image src="{{ pointOfInterestImageUrl }}" resize="w:160,h:160,fill:cover"></image>
     <Label text="{{ pointOfInterestTitle }}"   cssClass="title-label"/>
     <StackLayout row="1">
+      <button text="Share" ontap="share" textWrap="true"></button>
       <Label text="{{ pointOfInterestTelephone }}" />
     </StackLayout>
     <Label text="{{ pointOfInterestAddress }}"  />

@@ -3,9 +3,10 @@ var isInit = true,
     helpers = require('../../utils/widgets/helper'),
     service = require('./itineraries-service'),
     observable = require("data/observable"),
-    //mapbox = require("../../node_modules/nativescript-mapbox"),
     segmentedBarModule = require("ui/segmented-bar"),
     viewModel = require('./itineraries-view-model');
+
+//var moment = require("moment");
 
 
 //var mapsModule = require("nativescript-google-maps-sdk");
@@ -27,11 +28,11 @@ function ShowMap(args) {
 
 
 function pageLoaded(args) {
+    //alert(moment().format("dddd"))
     var page = args.object;
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);
     helpers.platformInit(page);
-
     page.bindingContext = viewModel;
     var itemsList = [];
     service.getAllRecords()

@@ -4,12 +4,13 @@
   </Page.actionBar>
 
   <StackLayout row="1">
-    <image src="{{ pointOfInterestImageUrl }}" resize="w:160,h:160,fill:cover"></image>
-    <Label text="{{ pointOfInterestTitle }}"   cssClass="title-label"/>
+    <image src="{{ placeToEatImageUrl }}" resize="w:160,h:160,fill:cover"></image>
+    <Label text="{{ placeToEatTitle }}"   cssClass="title-label"/>
+    <Label text="{{ placesToEatcategory }}"  cssClass="title-label" />
     <StackLayout row="1">
-      <Label text="{{ pointOfInterestTelephone }}" />
+      <Label text="{{ placeToEatTelephone }}" />
     </StackLayout>
-    <Label text="{{ pointOfInterestAddress }}"  />
-    <Label text="{{ pointOfInterestDescription }}" />
+    <Label text="{{ placeToEatAddress }}"  />
+    <Label text="{{ placeToEatDescription }}" />
   </StackLayout>
 </Page>

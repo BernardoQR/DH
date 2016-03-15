@@ -9,7 +9,8 @@ ViewModel = new Observable({
 
     isLoading: false,
     listItems: [],
-    SubListItems: []
+    SubListItems: [],
+    CategorySelected:""
     // additional properties
 
 });

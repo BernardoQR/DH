@@ -6,14 +6,14 @@
   <ListView items="{{ listItems }}" itemTap="onListViewItemTap">
     <ListView.itemTemplate>
       <StackLayout>
-        <Label text="{{ itineraryTitle }}"   cssClass="title-label"/>
-        <Label text="{{ itineraryDescription }}"  visibility="{{ visibility}}" />
-        <ListView items="{{ itineraryItems }}" itemTap="onDetailItemTap"  >
+        <Label text="{{ itemTitle }}"   cssClass="title-label"/>
+        <Label text="{{ itemDescription }}"  visibility="{{ visibility}}" />
+        <ListView items="{{ subItems }}" itemTap="onDetailItemTap"  >
           <ListView.itemTemplate >
             <StackLayout>
-              <Label text="{{ pointOfInterestTitle }}"  cssClass="title-label" />
+              <Label text="{{ placeToEatTitle }}"  cssClass="title-label" />
               <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
-              <Label text="{{ pointOfInterestDescription }}" />
+              <Label text="{{ placeToEatDescription }}" />
             </StackLayout>
           </ListView.itemTemplate>
         </ListView>

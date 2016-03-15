@@ -22,10 +22,10 @@ function pageLoaded(args) {
             result.forEach(function (item) {
                 flattenLocationProperties(item);
                 itemsList.push({
-                    itineraryTitle: item.Title,
-                    itineraryDescription: item.Description,
-                    itineraryId: item.Id,
-                    itineraryItems: [],
+                    itemTitle: item.Title,
+                    itemDescription: item.Description,
+                    itemId: item.Id,
+                    subItems: [],
                     visibility: "collapsed"
                 });
             });
@@ -51,28 +51,30 @@ function onListViewItemTap(args) {
     var temp = [];
     itemsList = GetListItems();
     var itemData = itemsList[args.index];
-
     var ChildItems = [];
-    service.getDynamicContent(itemData.itineraryId)
+  
+    service.getDynamicContent(itemData.itemId)
         			.then(function (SubItems) {
+        			  
         			    ChildItems = [];
         			    SubItems.forEach(function (dynamicContent) {
         			        flattenLocationProperties(dynamicContent);
         			        ChildItems.push({
-        			            pointOfInterestId: dynamicContent.Id,
-        			            pointOfInterestTitle: dynamicContent.Title,
-        			            pointOfInterestDescription: dynamicContent.Description,
-        			            pointOfInterestTelephone: dynamicContent.Telephone,
-        			            pointOfInterestAddress: dynamicContent.Address,
-        			            pointOfInterestImage: dynamicContent.Image,
+        			            placeToEatId: dynamicContent.Id,
+        			            placeToEatTitle: dynamicContent.Title,
+        			            placeToEatDescription: dynamicContent.Description,
+        			            placeToEatTelephone: dynamicContent.Telephone,
+        			            placeToEatAddress: dynamicContent.Address,
+        			            placeToEatImage: dynamicContent.Image,
         			            piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
-        			            pointOfInterestImageUrl: ""
+        			            placesToEatImageUrl: "",
+        			            placesToEatcategory: itemData.itemTitle
         			        });
         			    });
         			    itemsList[args.index].visibility = "visible";
-        			    itemsList[args.index].itineraryItems = ChildItems;
+        			    itemsList[args.index].subItems = ChildItems;
         			    temp.push(itemsList[args.index]);
-        			    viewModel.set('listItems', "");
+        			    viewModel.set('listItems', []);
         			    viewModel.set('listItems', itemsList);
         			    viewModel.set('SubListItems', ChildItems);
         			})
@@ -86,20 +88,21 @@ function onDetailItemTap(args) {
     var subItemsList = GetSubListItems();
     var subItemData = subItemsList[args.index];
 
-    if (subItemData.pointOfInterestImage != null && subItemData.pointOfInterestImage != "") {
+    if (subItemData.placeToEatImage != null && subItemData.placeToEatImage != "") {
 
-        service.getImage(subItemData.pointOfInterestImage)
+        service.getImage(subItemData.placeToEatImage)
             .then(function (data) {
                 var ChildItems = [];
                 ChildItems.push({
-                    pointOfInterestId: subItemData.pointOfInterestId,
-                    pointOfInterestTitle: subItemData.pointOfInterestTitle,
-                    pointOfInterestDescription: subItemData.pointOfInterestDescription,
-                    pointOfInterestTelephone: subItemData.pointOfInterestTelephone,
-                    pointOfInterestAddress: subItemData.pointOfInterestAddress,
-                    pointOfInterestImage: subItemData.pointOfInterestImage,
+                    placeToEatId: subItemData.placeToEatId,
+                    placeToEatTitle: subItemData.placeToEatTitle,
+                    placeToEatDescription: subItemData.placeToEatDescription,
+                    placeToEatTelephone: subItemData.placeToEatTelephone,
+                    placeToEatAddress: subItemData.placeToEatAddress,
+                    placeToEatImage: subItemData.placeToEatImage,
                     piPhoneAndAddress: subItemData.piPhoneAndAddress,
-                    pointOfInterestImageUrl: data[0].Uri
+                    placesToEatcategory: subItemData.placesToEatcategory,
+                    placeToEatImageUrl: data[0].Uri
                 });
                 viewModel.set('SubListItems', "");
                 viewModel.set('SubListItems', ChildItems);
@@ -111,11 +114,6 @@ function onDetailItemTap(args) {
          .catch(function onCatch(ex) {
              alert(ex)
          });
-
-
-
-
-
     }
     else {
         helpers.navigate({
@@ -138,7 +136,7 @@ function GetListItems() {
     itemsList = viewModel.get('listItems');
     itemsList.forEach(function (item) {
         item.visibility = "collapsed";
-        item.itineraryItems = "";
+        item.subItems = "";
     });
     return itemsList;
 }
@@ -166,10 +164,6 @@ function flattenLocationProperties(dataItem) {
 
 
 
-// START_CUSTOM_CODE_itineraries2
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-
-// END_CUSTOM_CODE_itineraries2
 exports.pageLoaded = pageLoaded;
 exports.onListViewItemTap = onListViewItemTap;
 exports.onDetailItemTap = onDetailItemTap;
