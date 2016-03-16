@@ -38,6 +38,5 @@ menuItems = [{
 }];
 
 navigationViewModel.set('menuItems', menuItems);
-navigationViewModel.set('backButtonHidden', true);
 
 module.exports = navigationViewModel;

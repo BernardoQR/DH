@@ -4,9 +4,19 @@ var isInit = true,
     // additional requires
     viewModel = require('./events-view-model');
 
+//var FetchStream = require("fetch").FetchStream;
+
+
+
 // additional functions
 function pageLoaded(args) {
     var page = args.object;
+
+    var fetch = new FetchStream("destinationhilliard.com/events/feed");
+
+    //fetch.on("data", function (chunk) {
+    //   alert(chunk);
+    //});
 
     helpers.platformInit(page);
     page.bindingContext = viewModel;

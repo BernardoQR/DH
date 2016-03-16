@@ -81,8 +81,8 @@ Service.prototype.getDynamicContent = function (args) {
 
 // additional properties
 
-// START_CUSTOM_CODE_itineraries2
+// START_CUSTOM_CODE_placesToEat
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_itineraries2
+// END_CUSTOM_CODE_placesToEat
 module.exports = new Service();

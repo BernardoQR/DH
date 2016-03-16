@@ -1,13 +1,15 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
-    <Page.actionBar>
-        <widgets:action-bar />
-    </Page.actionBar>
+  <Page.actionBar>
+    <widgets:action-bar />
+  </Page.actionBar>
 
-    <StackLayout>
-        <!-- additional view content -->
-        <!-- START_CUSTOM_CODE_placesToStay -->
-        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+  <StackLayout>
+    <!-- additional view content -->
+    <!-- START_CUSTOM_CODE_placesToStay -->
+    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
 
-        <!-- END_CUSTOM_CODE_placesToStay -->
-    </StackLayout>
+    <grid-layout rows="auto, auto"></grid-layout>
+
+    <!-- END_CUSTOM_CODE_placesToStay -->
+  </StackLayout>
 </Page>

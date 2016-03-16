@@ -5,7 +5,7 @@
 
   <StackLayout row="1">
 
-    
+  
 
     <image src="{{ pointOfInterestImageUrl }}" resize="w:160,h:160,fill:cover"></image>
     <Label text="{{ pointOfInterestTitle }}"   cssClass="title-label"/>

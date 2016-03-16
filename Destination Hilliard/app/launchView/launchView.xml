@@ -2,13 +2,17 @@
 
 
 
-
-  <ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
+  <StackLayout>
+    <grid-layout rows="auto, auto" id="grid">
+    
+    </grid-layout>
+  </StackLayout>
+  <!--<ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
         <ListView.itemTemplate>
             <GridLayout cssClass="list-item" columns="auto, *">
                 <Label cssClass="list-icon km-icon" text="{{ icon }}" />
                 <Label cssClass="list-title" col="1" text="{{ title }}" textWrap="true" />
             </GridLayout>
         </ListView.itemTemplate>
-    </ListView>
+    </ListView>-->
 </Page>

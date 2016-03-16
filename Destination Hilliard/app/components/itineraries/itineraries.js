@@ -6,10 +6,10 @@ var isInit = true,
     segmentedBarModule = require("ui/segmented-bar"),
     viewModel = require('./itineraries-view-model');
 
-//var moment = require("moment");
 
-
+var mapsModule = require("nativescript-google-maps-sdk/map-view");
 //var mapsModule = require("nativescript-google-maps-sdk");
+//var GoogleMapsLoader = require('google-maps');
 
 function ShowList(eventData) {
     viewModel.set('ListVisible', "visible");
@@ -18,13 +18,10 @@ function ShowList(eventData) {
 };
 
 
-
-
 function ShowMap(args) {
     viewModel.set('ListVisible', "collapsed");
     viewModel.set('MapVisible', "visible");
 }
-
 
 
 function pageLoaded(args) {
@@ -185,10 +182,10 @@ function flattenLocationProperties(dataItem) {
 
 
 
-// START_CUSTOM_CODE_itineraries2
+// START_CUSTOM_CODE_itineraries
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
-// END_CUSTOM_CODE_itineraries2
+// END_CUSTOM_CODE_itineraries
 exports.pageLoaded = pageLoaded;
 exports.onListViewItemTap = onListViewItemTap;
 exports.onDetailItemTap = onDetailItemTap;

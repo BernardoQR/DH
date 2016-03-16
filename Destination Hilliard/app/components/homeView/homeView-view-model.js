@@ -1,16 +1,34 @@
 'use strict';
-var ViewModel,
-    Observable = require('data/observable').Observable;
-// additional requires
+var menuItems,
+    observable = require('data/observable'),
+    navigationViewModel = new observable.Observable();
 
-ViewModel = new Observable({
+menuItems = [ {
+    "title": "Places To Eat",
+    "moduleName": "components/placesToEat/placesToEat",
+    "icon": "\ue0eb"
+}, {
+    "title": "Places To Stay",
+    "moduleName": "components/placesToStay/placesToStay",
+    "icon": "\ue0eb"
+}, {
+    "title": "Things To Do",
+    "moduleName": "components/thingsToDo/thingsToDo",
+    "icon": "\ue0eb"
+}, {
+    "title": "Itineraries",
+    "moduleName": "components/itineraries/itineraries",
+    "icon": "\ue0eb"
+}, {
+    "title": "Events",
+    "moduleName": "components/events/events",
+    "icon": "\ue0eb"
+}, {
+    "title": "Contact Us",
+    "moduleName": "components/contactUs/contactUs",
+    "icon": "\ue0eb"
+}];
 
-    pageTitle: 'Home View',
-    // additional properties
-});
+navigationViewModel.set('menuItems', menuItems);
 
-// START_CUSTOM_CODE_homeView
-// Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
-
-// END_CUSTOM_CODE_homeView
-module.exports = ViewModel;
+module.exports = navigationViewModel;
