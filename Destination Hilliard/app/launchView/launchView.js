@@ -21,18 +21,18 @@ function pageLoaded(args) {
             args.object
                 .animate({
                     scale: { x: 0.6, y: 0.6 },
-                    duration: 1500
+                    duration: 0
                 })
                 .then(function () {
                     return args.object.animate({
-                        scale: { x: 4, y: 4 },
+                        scale: { x: 4, y: 5 },
                         duration: 750
                     });
                 })
                 .then(function () {
                     return args.object.animate({
                         opacity: 0,
-                        duration: 1
+                        duration: 900
                     });
                 })
                 .then(function () {

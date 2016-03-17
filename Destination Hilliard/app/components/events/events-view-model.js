@@ -4,8 +4,9 @@ var ViewModel,
 // additional requires
 
 ViewModel = new Observable({
-
     pageTitle: 'Events',
+    isLoading: false,
+    listItems: []
     // additional properties
 });
 

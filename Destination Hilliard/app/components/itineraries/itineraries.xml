@@ -31,7 +31,9 @@
 
     <Label text="MAP"   cssClass="title-label" visibility="{{ MapVisible }}" />
 
-   
+
+    <ActivityIndicator row="1" busy="{{ isLoading }}" />
+
   </StackLayout>
 
   

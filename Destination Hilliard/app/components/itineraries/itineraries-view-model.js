@@ -6,7 +6,6 @@ var ViewModel,
 ViewModel = new Observable({
 
     pageTitle: 'Itineraries',
-
     isLoading: false,
     listItems: [],
     SubListItems: [],

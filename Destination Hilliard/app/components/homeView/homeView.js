@@ -14,7 +14,7 @@ function pageLoaded(args) {
 }
 
 function menuItemTap(args) {
-    helpers.navigate(navigationViewModel.menuItems[args.index]);
+    helpers.navigate(viewModel.menuItems[args.index]);
 }
 
 exports.pageLoaded = pageLoaded;

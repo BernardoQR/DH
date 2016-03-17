@@ -7,7 +7,7 @@ var isInit = true,
     viewModel = require('./itineraries-view-model');
 
 
-var mapsModule = require("nativescript-google-maps-sdk/map-view");
+//var mapsModule = require("nativescript-google-maps-sdk/map-view");
 //var mapsModule = require("nativescript-google-maps-sdk");
 //var GoogleMapsLoader = require('google-maps');
 
@@ -30,7 +30,7 @@ function pageLoaded(args) {
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);
     helpers.platformInit(page);
-    page.bindingContext = viewModel;
+   
     var itemsList = [];
     service.getAllRecords()
         .then(function (result) {
@@ -55,6 +55,7 @@ function pageLoaded(args) {
 
     viewModel.set('isLoading', false);
 
+    page.bindingContext = viewModel;
     if (isInit) {
         isInit = false;
         // additional pageInit
