@@ -10,7 +10,7 @@
 
     <!--workaround-->
 
-    <ListView items="{{ listItems }}"   >
+    <ListView items="{{ listItems }}" itemTap="onListViewItemTap"   >
       <ListView.itemTemplate>
         <StackLayout>
           <Label text="{{ title }}"   cssClass="title-label"/>

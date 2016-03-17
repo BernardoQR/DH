@@ -12,8 +12,16 @@ var http = require("http");
 
 
 
+function onListViewItemTap(args) {
+    var itemsList = [];
+    itemsList = GetListItems();
+    var itemData = itemsList[args.index];
+    helpers.navigate({
+        moduleName: 'components/events/itemDetails/itemDetails',
+        context: itemData
+    });
 
-
+}
 
 
 // additional functions
@@ -61,8 +69,18 @@ function pageLoaded(args) {
     }
 }
 
+
+
+function GetListItems() {
+    var itemsList = [];
+    itemsList = viewModel.get('listItems');
+    return itemsList;
+}
+
+
 // START_CUSTOM_CODE_events
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_events
 exports.pageLoaded = pageLoaded;
+exports.onListViewItemTap = onListViewItemTap;
