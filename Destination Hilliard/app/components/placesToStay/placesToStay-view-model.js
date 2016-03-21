@@ -7,6 +7,11 @@ ViewModel = new Observable({
 
     pageTitle: 'Places To Stay',
     // additional properties
+    isLoading: false,
+    listItems: [],
+    SubListItems: [],
+    ListVisible: "visible",
+    MapVisible: "collapsed"
 });
 
 // START_CUSTOM_CODE_placesToStay

@@ -3,11 +3,21 @@
         <widgets:action-bar />
     </Page.actionBar>
 
-    <StackLayout>
-        <!-- additional view content -->
-        <!-- START_CUSTOM_CODE_thingsToDo -->
-        <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
 
-        <!-- END_CUSTOM_CODE_thingsToDo -->
-    </StackLayout>
+  <ListView items="{{ listItems }}" itemTap="onListViewItemTap">
+    <ListView.itemTemplate>
+      <StackLayout>
+        <Label text="{{ itemTitle }}"   cssClass="title-label"/>
+        <ListView items="{{ subItems }}" itemTap="onDetailItemTap"  >
+          <ListView.itemTemplate >
+            <StackLayout>
+              <Label text="{{ placeToEatTitle }}"  cssClass="title-label" />
+              <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
+              <Label text="{{ placeToEatDescription }}" />
+            </StackLayout>
+          </ListView.itemTemplate>
+        </ListView>
+      </StackLayout>
+    </ListView.itemTemplate>
+  </ListView>
 </Page>

@@ -28,7 +28,6 @@ function ShowMap(args) {
 
 
 function pageLoaded(args) {
-    //alert(moment().format("dddd"))
     var page = args.object;
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);

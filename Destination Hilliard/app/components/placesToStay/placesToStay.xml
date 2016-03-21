@@ -4,12 +4,30 @@
   </Page.actionBar>
 
   <StackLayout>
-    <!-- additional view content -->
-    <!-- START_CUSTOM_CODE_placesToStay -->
-    <!-- Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes -->
+    <button text="List" ontap="ShowList" textWrap="true"></button>
+    <button text="Map" ontap="ShowMap"></button>
+   
+    
+    <StackLayout>
+      <ListView items="{{ listItems }}" itemTap="onDetailItemTap"   visibility="{{ ListVisible }}" >
+        <ListView.itemTemplate >
+          <StackLayout>
+            <Label text="{{ Title }}"  cssClass="title-label" />
+            <Label text="{{ PhoneAndAddress }}"  cssClass="title-label" />
+            <Label text="{{ Description }}" />
+          </StackLayout>
+        </ListView.itemTemplate>
+      </ListView>
+    </StackLayout>
 
 
 
-    <!-- END_CUSTOM_CODE_placesToStay -->
+
+    <WebView src="https://www.google.com/maps/d/embed?mid=z-n8Sy-nymiA.kvyDTLYyyPBI" height="10000" visibility="{{ MapVisible }}" />
+
+
+    <ActivityIndicator row="1" busy="{{ isLoading }}" />
+
   </StackLayout>
+
 </Page>

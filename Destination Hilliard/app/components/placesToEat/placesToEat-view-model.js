@@ -9,7 +9,9 @@ ViewModel = new Observable({
 
     isLoading: false,
     listItems: [],
-    SubListItems: []
+    SubListItems: [],
+    ListVisible: "visible",
+    MapVisible: "collapsed"
     // additional properties
 
 });

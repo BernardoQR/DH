@@ -7,7 +7,7 @@ var shareLink = "";
 
 function navigatedTo(args) {
     var page = args.object;
-    shareLink = page.navigationContext.ShareLink;
+    shareLink = page.navigationContext.Website
     page.bindingContext = page.navigationContext;
 }
 
@@ -17,4 +17,6 @@ exports.share = function () {
 };
 
 
+
 exports.navigatedTo = navigatedTo;
+

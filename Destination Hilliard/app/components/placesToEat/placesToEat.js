@@ -5,6 +5,19 @@ var isInit = true,
     viewModel = require('./placesToEat-view-model');
 
 
+function ShowList(eventData) {
+    viewModel.set('ListVisible', "visible");
+    viewModel.set('MapVisible', "collapsed");
+
+};
+
+
+function ShowMap(args) {
+    viewModel.set('ListVisible', "collapsed");
+    viewModel.set('MapVisible', "visible");
+}
+
+
 function pageLoaded(args) {
     viewModel.set('isLoading', true);
     var page = args.object;
@@ -18,7 +31,6 @@ function pageLoaded(args) {
 
     service.getAllRecords()
         .then(function (result) {
-
             result.forEach(function (item) {
                 flattenLocationProperties(item);
                 itemsList.push({
@@ -52,10 +64,10 @@ function onListViewItemTap(args) {
     itemsList = GetListItems();
     var itemData = itemsList[args.index];
     var ChildItems = [];
-  
+
     service.getDynamicContent(itemData.itemId)
         			.then(function (SubItems) {
-        			  
+
         			    ChildItems = [];
         			    SubItems.forEach(function (dynamicContent) {
         			        flattenLocationProperties(dynamicContent);
@@ -67,8 +79,10 @@ function onListViewItemTap(args) {
         			            placeToEatAddress: dynamicContent.Address,
         			            placeToEatImage: dynamicContent.Image,
         			            piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
+        			            ShareLink: dynamicContent.Website,
         			            placesToEatImageUrl: "",
-        			            placesToEatcategory: itemData.itemTitle
+        			            placesToEatcategory: itemData.itemTitle,
+        			            shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed")
         			        });
         			    });
         			    itemsList[args.index].visibility = "visible";
@@ -102,7 +116,8 @@ function onDetailItemTap(args) {
                     placeToEatImage: subItemData.placeToEatImage,
                     piPhoneAndAddress: subItemData.piPhoneAndAddress,
                     placesToEatcategory: subItemData.placesToEatcategory,
-                    placeToEatImageUrl: data[0].Uri
+                    ShareLink: subItemData.ShareLink,
+                    placeToEatImageUrl: data[0].Uri,
                 });
                 viewModel.set('SubListItems', "");
                 viewModel.set('SubListItems', ChildItems);
@@ -167,3 +182,5 @@ function flattenLocationProperties(dataItem) {
 exports.pageLoaded = pageLoaded;
 exports.onListViewItemTap = onListViewItemTap;
 exports.onDetailItemTap = onDetailItemTap;
+exports.ShowMap = ShowMap;
+exports.ShowList = ShowList;

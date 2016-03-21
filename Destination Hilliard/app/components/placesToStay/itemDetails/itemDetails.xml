@@ -1,0 +1,17 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" navigatedTo="navigatedTo" >
+  <Page.actionBar>
+    <widgets:action-bar />
+  </Page.actionBar>
+
+  <StackLayout row="1">
+
+    <image src="{{ ImageUrl }}" resize="w:160,h:160,fill:cover"></image>
+    <Label text="{{ Title }}"   cssClass="title-label"/>
+    <StackLayout row="1">
+      <Label text="{{ Telephone }}" />
+      <button text="Share" ontap="share" textWrap="true"></button>
+    </StackLayout>
+    <Label text="{{ Address }}"  />
+    <Label text="{{ Description }}" />
+  </StackLayout>
+</Page>
