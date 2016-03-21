@@ -7,9 +7,12 @@ var isInit = true,
     viewModel = require('./itineraries-view-model');
 
 
+
 //var mapsModule = require("nativescript-google-maps-sdk/map-view");
 //var mapsModule = require("nativescript-google-maps-sdk");
 //var GoogleMapsLoader = require('google-maps');
+//var mapbox = require("nativescript-mapbox");
+
 
 function ShowList(eventData) {
     viewModel.set('ListVisible', "visible");
@@ -34,7 +37,6 @@ function pageLoaded(args) {
     var itemsList = [];
     service.getAllRecords()
         .then(function (result) {
-
             result.forEach(function (item) {
                 flattenLocationProperties(item);
                 itemsList.push({
@@ -46,7 +48,6 @@ function pageLoaded(args) {
                 });
             });
             viewModel.set('listItems', itemsList);
-
         })
         .catch(function onCatch() {
             //viewModel.set('isLoading', false);
@@ -143,12 +144,12 @@ function onDetailItemTap(args) {
 }
 
 
-
 function GetSubListItems() {
     var subItemsList = [];
     subItemsList = viewModel.get('SubListItems');
     return subItemsList;
 }
+
 
 function GetListItems() {
     var itemsList = [];

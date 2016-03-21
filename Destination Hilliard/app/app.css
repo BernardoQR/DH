@@ -11,7 +11,11 @@ page {
 button {
     horizontal-align: stretch;
 }
-
+.homepage{background-image:url("~/images/homepage_background.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed; 
+          background-size:cover;              
+}
 image,
 activityindicator {
     horizontal-align: center;

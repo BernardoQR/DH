@@ -40,7 +40,7 @@ function pageLoaded(args) {
         var arrayItems = arrayChannel[1].split("<item>");     
         for (var i = 1; i < arrayItems.length; i++) {
             itemsList.push({
-                title: arrayItems[i].split("<title>")[1].split("</title>")[0],
+                title: arrayItems[i].split("<title>")[1].split("</title>")[0].replace("&#039;","'"),
                 link: arrayItems[i].split("<link>")[1].split("</link>")[0],
                 guid: arrayItems[i].split("<guid>")[1].split("</guid>")[0],
                 pubDate: arrayItems[i].split("<description><![CDATA[")[1].split("]]></description>")[0].split("<br/>")[0],

@@ -26,10 +26,11 @@
         </StackLayout>
       </ListView.itemTemplate>
     </ListView>
+ 
 
+ 
 
-
-    <Label text="MAP"   cssClass="title-label" visibility="{{ MapVisible }}" />
+    <WebView src="https://www.google.com/maps/d/embed?mid=z-n8Sy-nymiA.kvyDTLYyyPBI" height="10000" visibility="{{ MapVisible }}" />
 
 
     <ActivityIndicator row="1" busy="{{ isLoading }}" />

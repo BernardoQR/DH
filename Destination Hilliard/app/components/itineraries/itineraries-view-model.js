@@ -12,6 +12,8 @@ ViewModel = new Observable({
     ListVisible: "visible",
     MapVisible: "collapsed"
 
+
+
 });
 
 // START_CUSTOM_CODE_itineraries
