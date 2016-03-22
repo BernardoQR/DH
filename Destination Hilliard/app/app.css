@@ -4,14 +4,16 @@
     horizontal-align: center;
 }
 
-page {
-    background-color: #fff;
+Page {
+   /*background-image:url("~/images/homepage.png")*/
 }
 
 button {
     horizontal-align: stretch;
 }
-.homepage{background-image:url("~/images/homepage.png");
+
+.homepage{
+    background-image:url("~/images/homepage.png");
           background-repeat: no-repeat;
           background-attachment: fixed; 
           background-size:cover;              
@@ -108,6 +110,13 @@ switch {
 
 
 /* START_CUSTOM_CODE_nativeScriptApp */
+
+ActionBar {
+    background-color:  #2d77b6;
+    color: white;
+}
+
+
 
 
 /* Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes */

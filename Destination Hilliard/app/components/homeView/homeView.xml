@@ -2,13 +2,35 @@
 
 
 
-  
-  <ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
-    <ListView.itemTemplate>
-      <GridLayout cssClass="list-item" columns="auto, *">
-        <Label cssClass="list-icon km-icon" text="{{ icon }}" />
-        <Label cssClass="list-title" col="1" text="{{ title }}" textWrap="true" />
-      </GridLayout>
-    </ListView.itemTemplate>
-  </ListView>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.titleView>
+        <StackLayout orientation="horizontal" >
+          <image src="~/images/nativescript_logo.png"   ></image>
+        </StackLayout>
+      </ActionBar.titleView>
+      <ActionBar.actionItems>
+        <android>
+          <NavigationButton icon="~/images/hamburger.png"  android.position="left" tap="showSideDrawer" />
+        </android>
+        <ios>
+          <ActionItem icon="~/images/hamburger.png" ios.position="left" tap="showSideDrawer" />
+        </ios>
+      </ActionBar.actionItems>
+
+      <NavigationButton  icon="~/images/hamburger.png"  android.systemIcon="ic_menu_back" tap="onNavBtnTap" visibility="collapsed"  />
+    </ActionBar>
+  </Page.actionBar>
+
+  <StackLayout>
+    <ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
+      <ListView.itemTemplate>
+        <GridLayout cssClass="list-item" columns="auto, *">
+          <Label cssClass="list-icon km-icon" text="{{ icon }}" />
+          <Label cssClass="list-title" col="1" text="{{ title }}" textWrap="true" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+  </StackLayout>
+
 </Page>

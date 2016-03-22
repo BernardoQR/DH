@@ -8,29 +8,22 @@ var isInit = true,
     viewModel = require('./thingsToDo-view-model');
 
 
-
-
-
-
 function ShowList(eventData) {
     viewModel.set('ListVisible', "visible");
     viewModel.set('MapVisible', "collapsed");
 
 };
 
-
 function ShowMap(args) {
     viewModel.set('ListVisible', "collapsed");
     viewModel.set('MapVisible', "visible");
 }
 
-
-
 // additional functions
 function pageLoaded(args) {
     viewModel.set('isLoading', true);
     var page = args.object;
-
+    viewModel.set('indexExpanded', -1);
     helpers.platformInit(page);
 
     page.bindingContext = viewModel;
@@ -69,60 +62,73 @@ function pageLoaded(args) {
 
 function onListViewItemTap(args) {
     var itemsList = [];
-    var temp = [];
     itemsList = GetListItems();
     var itemData = itemsList[args.index];
     var ChildItems = [];
 
-    service.getDynamicContent(itemData.itemId)
-        			.then(function (SubItems) {
+    if (viewModel.get('indexExpanded') != args.index) {
+        viewModel.set('indexExpanded', args.index);
+        service.getDynamicContent(itemData.itemId)
+                        .then(function (SubItems) {
+                            ChildItems = [];
+                            SubItems.forEach(function (dynamicContent) {
+                                flattenLocationProperties(dynamicContent);
+                                ChildItems.push({
+                                    thingstoDoId: dynamicContent.Id,
+                                    thingstoDoTitle: dynamicContent.Title,
+                                    thingstoDoDescription: dynamicContent.Description,
+                                    thingstoDoTelephone: dynamicContent.Telephone,
+                                    thingstoDoAddress: dynamicContent.Address,
+                                    thingstoDoImage: dynamicContent.Image,
+                                    piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
+                                    ShareLink: dynamicContent.Website,
+                                    thingstoDoImageUrl: "",
+                                    thingstoDocategory: itemData.itemTitle,
+                                    shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed")
+                                });
+                            });
+                            itemsList[args.index].visibility = "visible";
+                            itemsList[args.index].subItems = ChildItems;
+                            viewModel.set('listItems', []);
+                            viewModel.set('listItems', itemsList);
+                            viewModel.set('SubListItems', ChildItems);
+                        })
+             .catch(function onCatch(ex) {
+                 alert(ex)
+             });
+    }
+    else {
+        viewModel.set('indexExpanded', -1);
+        itemsList[args.index].visibility = "collapsed";
+        itemsList[args.index].subItems = [];
+        viewModel.set('SubListItems', []);
+        viewModel.set('listItems', []);
+        viewModel.set('listItems', itemsList);
+    }
 
-        			    ChildItems = [];
-        			    SubItems.forEach(function (dynamicContent) {
-        			        flattenLocationProperties(dynamicContent);
-        			        ChildItems.push({
-        			            placeToEatId: dynamicContent.Id,
-        			            placeToEatTitle: dynamicContent.Title,
-        			            placeToEatDescription: dynamicContent.Description,
-        			            placeToEatTelephone: dynamicContent.Telephone,
-        			            placeToEatAddress: dynamicContent.Address,
-        			            placeToEatImage: dynamicContent.Image,
-        			            piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
-        			            placesToEatImageUrl: "",
-        			            placesToEatcategory: itemData.itemTitle
-        			        });
-        			    });
-        			    itemsList[args.index].visibility = "visible";
-        			    itemsList[args.index].subItems = ChildItems;
-        			    temp.push(itemsList[args.index]);
-        			    viewModel.set('listItems', []);
-        			    viewModel.set('listItems', itemsList);
-        			    viewModel.set('SubListItems', ChildItems);
-        			})
-         .catch(function onCatch(ex) {
-             alert(ex)
-         });
 }
 
 function onDetailItemTap(args) {
     var subItemsList = GetSubListItems();
     var subItemData = subItemsList[args.index];
 
-    if (subItemData.placeToEatImage != null && subItemData.placeToEatImage != "") {
+    if (subItemData.thingstoDoImage != undefined && subItemData.thingstoDoImage != null && subItemData.thingstoDoImage != "") {
 
-        service.getImage(subItemData.placeToEatImage)
+        service.getImage(subItemData.thingstoDoImage)
             .then(function (data) {
                 var ChildItems = [];
                 ChildItems.push({
-                    placeToEatId: subItemData.placeToEatId,
-                    placeToEatTitle: subItemData.placeToEatTitle,
-                    placeToEatDescription: subItemData.placeToEatDescription,
-                    placeToEatTelephone: subItemData.placeToEatTelephone,
-                    placeToEatAddress: subItemData.placeToEatAddress,
-                    placeToEatImage: subItemData.placeToEatImage,
+                    thingstoDoId: subItemData.thingstoDoId,
+                    thingstoDoTitle: subItemData.thingstoDoTitle,
+                    thingstoDoDescription: subItemData.thingstoDoDescription,
+                    thingstoDoTelephone: subItemData.thingstoDoTelephone,
+                    thingstoDoAddress: subItemData.thingstoDoAddress,
+                    thingstoDoImage: subItemData.thingstoDoImage,
                     piPhoneAndAddress: subItemData.piPhoneAndAddress,
-                    placesToEatcategory: subItemData.placesToEatcategory,
-                    placeToEatImageUrl: data[0].Uri
+                    thingstoDocategory: subItemData.thingstoDocategory,
+                    ShareLink: subItemData.ShareLink,
+                    shareVisible: subItemData.shareVisible,
+                    thingstoDoImageUrl: data[0].Uri
                 });
                 viewModel.set('SubListItems', "");
                 viewModel.set('SubListItems', ChildItems);
@@ -143,8 +149,6 @@ function onDetailItemTap(args) {
     }
 }
 
-
-
 function GetSubListItems() {
     var subItemsList = [];
     subItemsList = viewModel.get('SubListItems');
@@ -160,7 +164,6 @@ function GetListItems() {
     });
     return itemsList;
 }
-
 
 function flattenLocationProperties(dataItem) {
     var propName, propValue,
@@ -181,9 +184,12 @@ function flattenLocationProperties(dataItem) {
     }
 }
 
-
 // START_CUSTOM_CODE_thingsToDo
 // Add custom code here. For more information about custom code, see http://docs.telerik.com/platform/screenbuilder/troubleshooting/how-to-keep-custom-code-changes
 
 // END_CUSTOM_CODE_thingsToDo
 exports.pageLoaded = pageLoaded;
+exports.onListViewItemTap = onListViewItemTap;
+exports.onDetailItemTap = onDetailItemTap;
+exports.ShowMap = ShowMap;
+exports.ShowList = ShowList;

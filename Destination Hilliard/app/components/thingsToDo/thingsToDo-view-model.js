@@ -6,6 +6,12 @@ var ViewModel,
 ViewModel = new Observable({
 
     pageTitle: 'Things To Do',
+    isLoading: false,
+    listItems: [],
+    SubListItems: [],
+    ListVisible: "visible",
+    MapVisible: "collapsed",
+    indexExpanded: -1
     // additional properties
 });
 

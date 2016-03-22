@@ -4,14 +4,14 @@
   </Page.actionBar>
 
   <StackLayout row="1">
-    <image src="{{ placeToEatImageUrl }}" resize="w:160,h:160,fill:cover"></image>
-    <Label text="{{ placeToEatTitle }}"   cssClass="title-label"/>
+    <image src="{{ thingstoDoImageUrl }}" resize="w:160,h:160,fill:cover"></image>
+    <Label text="{{ thingstoDoTitle }}"   cssClass="title-label"/>
     <Label text="{{ placesToEatcategory }}"  cssClass="title-label" />
     <StackLayout row="1">
-      <button text="Share" ontap="share" textWrap="true"></button>
-      <Label text="{{ placeToEatTelephone }}" />
+      <button text="Share" ontap="share" textWrap="true" visibility="{{ shareVisible }}"></button>
+      <Label text="{{ thingstoDoTelephone }}" />
     </StackLayout>
-    <Label text="{{ placeToEatAddress }}"  />
-    <Label text="{{ placeToEatDescription }}" />
+    <Label text="{{ thingstoDoAddress }}"  />
+    <Label text="{{ thingstoDoDescription }}" />
   </StackLayout>
 </Page>

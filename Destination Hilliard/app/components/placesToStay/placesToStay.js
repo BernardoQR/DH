@@ -96,7 +96,7 @@ function onDetailItemTap(args) {
     var subItemsList = GetItems();
     var subItemData = subItemsList[args.index];
 
-    if (subItemData.ObjImage != null && subItemData.ObjImage != "") {
+    if (subItemData.ObjImage != undefined  && subItemData.ObjImage != null && subItemData.ObjImage != "") {
         service.getImage(subItemData.ObjImage)
             .then(function (data) {
                 var ChildItems = [];

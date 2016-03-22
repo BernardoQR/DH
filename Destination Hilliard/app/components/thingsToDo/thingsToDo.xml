@@ -1,23 +1,35 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
-    <Page.actionBar>
-        <widgets:action-bar />
-    </Page.actionBar>
+  <Page.actionBar>
+    <ActionBar title="{{ pageTitle }}">
+      <NavigationButton ios.icon="res://ic_add_white" android.icon="res://ic_add_white_24dp" tap="onNavigateBack" />
+    </ActionBar>
+  </Page.actionBar>
 
 
-  <ListView items="{{ listItems }}" itemTap="onListViewItemTap">
-    <ListView.itemTemplate>
-      <StackLayout>
-        <Label text="{{ itemTitle }}"   cssClass="title-label"/>
-        <ListView items="{{ subItems }}" itemTap="onDetailItemTap"  >
-          <ListView.itemTemplate >
-            <StackLayout>
-              <Label text="{{ placeToEatTitle }}"  cssClass="title-label" />
-              <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
-              <Label text="{{ placeToEatDescription }}" />
-            </StackLayout>
-          </ListView.itemTemplate>
-        </ListView>
-      </StackLayout>
-    </ListView.itemTemplate>
-  </ListView>
+  <StackLayout>
+    <button text="List" ontap="ShowList" textWrap="true"></button>
+    <button text="Map" ontap="ShowMap"></button>
+    
+    <ListView items="{{ listItems }}" itemTap="onListViewItemTap"  visibility="{{ ListVisible }}">
+      <ListView.itemTemplate>
+        <StackLayout>
+          <Label text="{{ itemTitle }}"   cssClass="title-label"/>
+          <ListView items="{{ subItems }}" itemTap="onDetailItemTap"  >
+            <ListView.itemTemplate >
+              <StackLayout>
+                <Label text="{{ thingstoDoTitle }}"  cssClass="title-label" />
+                <Label text="{{ piPhoneAndAddress }}"  cssClass="title-label" />
+                <Label text="{{ thingstoDoDescription }}" />
+              </StackLayout>
+            </ListView.itemTemplate>
+          </ListView>
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <WebView src="https://www.google.com/maps/d/embed?mid=z-n8Sy-nymiA.kvyDTLYyyPBI" height="10000" visibility="{{ MapVisible }}" />
+    <ActivityIndicator row="1" busy="{{ isLoading }}" />
+
+  </StackLayout>
+
 </Page>

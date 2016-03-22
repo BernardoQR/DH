@@ -7,7 +7,7 @@ var shareLink = "";
 
 function navigatedTo(args) {
     var page = args.object;
-    shareLink = page.navigationContext.Website
+    shareLink = page.navigationContext.Website;
     page.bindingContext = page.navigationContext;
 }
 

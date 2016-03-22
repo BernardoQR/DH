@@ -31,8 +31,9 @@ function pageLoaded(args) {
     var page = args.object;
     viewModel.set('isLoading', true);
     viewModel.set('listItems', []);
+    viewModel.set('indexExpanded', -1);
     helpers.platformInit(page);
-   
+
     var itemsList = [];
     service.getAllRecords()
         .then(function (result) {
@@ -49,7 +50,7 @@ function pageLoaded(args) {
             viewModel.set('listItems', itemsList);
         })
         .catch(function onCatch() {
-            //viewModel.set('isLoading', false);
+            viewModel.set('isLoading', false);
             alert("error2")
         });
 
@@ -65,37 +66,49 @@ function pageLoaded(args) {
 
 function onListViewItemTap(args) {
     var itemsList = [];
-    var temp = [];
+
     itemsList = GetListItems();
     var itemData = itemsList[args.index];
 
     var ChildItems = [];
-    service.getDynamicContent(itemData.itineraryId)
-        			.then(function (SubItems) {
-        			    ChildItems = [];
-        			    SubItems.forEach(function (dynamicContent) {
-        			        flattenLocationProperties(dynamicContent);
-        			        ChildItems.push({
-        			            pointOfInterestId: dynamicContent.Id,
-        			            pointOfInterestTitle: dynamicContent.Title,
-        			            pointOfInterestDescription: dynamicContent.Description,
-        			            pointOfInterestTelephone: dynamicContent.Telephone,
-        			            pointOfInterestAddress: dynamicContent.Address,
-        			            pointOfInterestImage: dynamicContent.Image,
-        			            piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
-        			            pointOfInterestImageUrl: ""
-        			        });
-        			    });
-        			    itemsList[args.index].visibility = "visible";
-        			    itemsList[args.index].itineraryItems = ChildItems;
-        			    temp.push(itemsList[args.index]);
-        			    viewModel.set('listItems', "");
-        			    viewModel.set('listItems', itemsList);
-        			    viewModel.set('SubListItems', ChildItems);
-        			})
-         .catch(function onCatch(ex) {
-             alert(ex)
-         });
+
+    if (viewModel.get('indexExpanded') != args.index) {
+        viewModel.set('indexExpanded', args.index);
+        service.getDynamicContent(itemData.itineraryId)
+                        .then(function (SubItems) {
+                            ChildItems = [];
+                            SubItems.forEach(function (dynamicContent) {
+                                flattenLocationProperties(dynamicContent);
+                                ChildItems.push({
+                                    pointOfInterestId: dynamicContent.Id,
+                                    pointOfInterestTitle: dynamicContent.Title,
+                                    pointOfInterestDescription: dynamicContent.Description,
+                                    pointOfInterestTelephone: dynamicContent.Telephone,
+                                    pointOfInterestAddress: dynamicContent.Address,
+                                    pointOfInterestImage: dynamicContent.Image,
+                                    piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
+                                    pointOfInterestImageUrl: ""
+                                });
+                            });
+                            itemsList[args.index].visibility = "visible";
+                            itemsList[args.index].itineraryItems = ChildItems;
+                            viewModel.set('listItems', "");
+                            viewModel.set('listItems', itemsList);
+                            viewModel.set('SubListItems', ChildItems);
+                        })
+             .catch(function onCatch(ex) {
+                 alert(ex)
+             });
+    }
+    else {
+        viewModel.set('indexExpanded', -1);
+        itemsList[args.index].visibility = "collapsed";
+        itemsList[args.index].subItems = [];
+        viewModel.set('SubListItems', []);
+        viewModel.set('listItems', []);
+        viewModel.set('listItems', itemsList);
+
+    }
 }
 
 
@@ -103,7 +116,7 @@ function onDetailItemTap(args) {
     var subItemsList = GetSubListItems();
     var subItemData = subItemsList[args.index];
 
-    if (subItemData.pointOfInterestImage != null && subItemData.pointOfInterestImage != "") {
+    if (subItemData.pointOfInterestImage != undefined && subItemData.pointOfInterestImage != null && subItemData.pointOfInterestImage != "") {
 
         service.getImage(subItemData.pointOfInterestImage)
             .then(function (data) {

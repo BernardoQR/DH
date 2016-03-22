@@ -11,15 +11,14 @@ function ShowList(eventData) {
 
 };
 
-
 function ShowMap(args) {
     viewModel.set('ListVisible', "collapsed");
     viewModel.set('MapVisible', "visible");
 }
 
-
 function pageLoaded(args) {
     viewModel.set('isLoading', true);
+    viewModel.set('indexExpanded', -1);
     var page = args.object;
 
     helpers.platformInit(page);
@@ -45,7 +44,7 @@ function pageLoaded(args) {
 
         })
         .catch(function onCatch() {
-            //viewModel.set('isLoading', false);
+            viewModel.set('isLoading', false);
             alert("error2")
         });
 
@@ -57,52 +56,61 @@ function pageLoaded(args) {
     }
 }
 
-
 function onListViewItemTap(args) {
     var itemsList = [];
-    var temp = [];
     itemsList = GetListItems();
     var itemData = itemsList[args.index];
     var ChildItems = [];
 
-    service.getDynamicContent(itemData.itemId)
-        			.then(function (SubItems) {
 
-        			    ChildItems = [];
-        			    SubItems.forEach(function (dynamicContent) {
-        			        flattenLocationProperties(dynamicContent);
-        			        ChildItems.push({
-        			            placeToEatId: dynamicContent.Id,
-        			            placeToEatTitle: dynamicContent.Title,
-        			            placeToEatDescription: dynamicContent.Description,
-        			            placeToEatTelephone: dynamicContent.Telephone,
-        			            placeToEatAddress: dynamicContent.Address,
-        			            placeToEatImage: dynamicContent.Image,
-        			            piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
-        			            ShareLink: dynamicContent.Website,
-        			            placesToEatImageUrl: "",
-        			            placesToEatcategory: itemData.itemTitle,
-        			            shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed")
-        			        });
-        			    });
-        			    itemsList[args.index].visibility = "visible";
-        			    itemsList[args.index].subItems = ChildItems;
-        			    temp.push(itemsList[args.index]);
-        			    viewModel.set('listItems', []);
-        			    viewModel.set('listItems', itemsList);
-        			    viewModel.set('SubListItems', ChildItems);
-        			})
-         .catch(function onCatch(ex) {
-             alert(ex)
-         });
+    if (viewModel.get('indexExpanded') != args.index) {
+
+        viewModel.set('indexExpanded', args.index);
+        service.getDynamicContent(itemData.itemId)
+                        .then(function (SubItems) {
+
+                            ChildItems = [];
+                            SubItems.forEach(function (dynamicContent) {
+                                flattenLocationProperties(dynamicContent);
+                                ChildItems.push({
+                                    placeToEatId: dynamicContent.Id,
+                                    placeToEatTitle: dynamicContent.Title,
+                                    placeToEatDescription: dynamicContent.Description,
+                                    placeToEatTelephone: dynamicContent.Telephone,
+                                    placeToEatAddress: dynamicContent.Address,
+                                    placeToEatImage: dynamicContent.Image,
+                                    piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
+                                    ShareLink: dynamicContent.Website,
+                                    placesToEatImageUrl: "",
+                                    placesToEatcategory: itemData.itemTitle,
+                                    shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed")
+                                });
+                            });
+                            itemsList[args.index].visibility = "visible";
+                            itemsList[args.index].subItems = ChildItems;
+                            viewModel.set('listItems', []);
+                            viewModel.set('listItems', itemsList);
+                            viewModel.set('SubListItems', ChildItems);
+                        })
+             .catch(function onCatch(ex) {
+                 alert(ex)
+             });
+    }
+    else {
+        viewModel.set('indexExpanded', -1);
+        itemsList[args.index].visibility = "collapsed";
+        itemsList[args.index].subItems = [];
+        viewModel.set('SubListItems', []);
+        viewModel.set('listItems',  []);
+        viewModel.set('listItems', itemsList);
+    }
 }
-
 
 function onDetailItemTap(args) {
     var subItemsList = GetSubListItems();
     var subItemData = subItemsList[args.index];
 
-    if (subItemData.placeToEatImage != null && subItemData.placeToEatImage != "") {
+    if (subItemData.placeToEatImage != undefined && subItemData.placeToEatImage != null && subItemData.placeToEatImage != "") {
 
         service.getImage(subItemData.placeToEatImage)
             .then(function (data) {
@@ -117,6 +125,7 @@ function onDetailItemTap(args) {
                     piPhoneAndAddress: subItemData.piPhoneAndAddress,
                     placesToEatcategory: subItemData.placesToEatcategory,
                     ShareLink: subItemData.ShareLink,
+                    shareVisible: subItemData.shareVisible,
                     placeToEatImageUrl: data[0].Uri,
                 });
                 viewModel.set('SubListItems', "");
@@ -138,8 +147,6 @@ function onDetailItemTap(args) {
     }
 }
 
-
-
 function GetSubListItems() {
     var subItemsList = [];
     subItemsList = viewModel.get('SubListItems');
@@ -155,7 +162,6 @@ function GetListItems() {
     });
     return itemsList;
 }
-
 
 function flattenLocationProperties(dataItem) {
     var propName, propValue,
@@ -175,7 +181,6 @@ function flattenLocationProperties(dataItem) {
         }
     }
 }
-// additional functions
 
 
 

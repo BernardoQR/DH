@@ -1,6 +1,8 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" loaded="pageLoaded">
   <Page.actionBar>
-    <widgets:action-bar />
+    <ActionBar title="{{ pageTitle }}">
+      <NavigationButton ios.icon="res://ic_add_white" android.icon="res://ic_add_white_24dp" tap="onNavigateBack" />
+    </ActionBar>
   </Page.actionBar>
 
   <StackLayout>
