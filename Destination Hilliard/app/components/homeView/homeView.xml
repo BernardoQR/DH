@@ -6,7 +6,7 @@
     <ActionBar>
       <ActionBar.titleView>
         <StackLayout orientation="horizontal" >
-          <image src="~/images/nativescript_logo.png"   ></image>
+          <image src="~/images/nativescript_logo.png"  ></image>
         </StackLayout>
       </ActionBar.titleView>
       <ActionBar.actionItems>
@@ -14,23 +14,34 @@
           <NavigationButton icon="~/images/hamburger.png"  android.position="left" tap="showSideDrawer" />
         </android>
         <ios>
-          <ActionItem icon="~/images/hamburger.png" ios.position="left" tap="showSideDrawer" />
+          <ActionItem icon="~/images/hamburger.png" width="10" height="10" ios.position="left" tap="showSideDrawer" />
         </ios>
       </ActionBar.actionItems>
 
-      <NavigationButton  icon="~/images/hamburger.png"  android.systemIcon="ic_menu_back" tap="onNavBtnTap" visibility="collapsed"  />
+      <NavigationButton  icon="~/images/hamburger.png" width="10" height="10"  android.systemIcon="ic_menu_back" tap="onNavBtnTap" visibility="collapsed"  />
     </ActionBar>
   </Page.actionBar>
 
   <StackLayout>
-    <ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
+
+
+    <image src="~/images/home-page/Places-To-Eat.png" width="100" height="100"  ontap="placesToEat"></image>
+    <image src="~/images/home-page/Places-To-Stay.png" width="100" height="100"  ontap="placesToStay"></image>
+    <image src="~/images/home-page/Things-To-Do.png" width="100" height="100"  ontap="thingsToDo"></image>
+    <image src="~/images/home-page/Itineraries.png" width="100" height="100"  ontap="itineraries"></image>
+    <image src="~/images/home-page/Events.png" width="100" height="100"  ontap="events"></image>
+    <image src="~/images/home-page/Contact-Us.png" width="100" height="100"  ontap="contactUs"></image>
+
+
+
+    <!--<ListView class="list" items="{{ menuItems }}" itemTap="menuItemTap">
       <ListView.itemTemplate>
         <GridLayout cssClass="list-item" columns="auto, *">
           <Label cssClass="list-icon km-icon" text="{{ icon }}" />
           <Label cssClass="list-title" col="1" text="{{ title }}" textWrap="true" />
         </GridLayout>
       </ListView.itemTemplate>
-    </ListView>
+    </ListView>-->
   </StackLayout>
 
 </Page>

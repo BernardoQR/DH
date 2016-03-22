@@ -1,11 +1,12 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:widgets="utils/widgets" navigatedTo="navigatedTo" >
   <Page.actionBar>
-    <widgets:action-bar />
+    <ActionBar title="{{ pageTitle }}">
+      <NavigationButton ios.icon="res://ic_add_white" android.icon="res://ic_add_white_24dp" tap="onNavigateBack" />
+    </ActionBar>
   </Page.actionBar>
-
   <StackLayout row="1">
 
-    <image src="{{ pointOfInterestImageUrl }}" resize="w:160,h:160,fill:cover"></image>
+    <image src="{{ pointOfInterestImageUrl }}"  height="200" ></image>
     <Label text="{{ pointOfInterestTitle }}"   cssClass="title-label"/>
     <StackLayout row="1">
       <Label text="{{ pointOfInterestTelephone }}" />

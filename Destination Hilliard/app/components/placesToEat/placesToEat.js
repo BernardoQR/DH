@@ -80,10 +80,14 @@ function onListViewItemTap(args) {
                                     placeToEatAddress: dynamicContent.Address,
                                     placeToEatImage: dynamicContent.Image,
                                     piPhoneAndAddress: dynamicContent.Address + " . " + dynamicContent.Telephone,
-                                    ShareLink: dynamicContent.Website,
                                     placesToEatImageUrl: "",
                                     placesToEatcategory: itemData.itemTitle,
-                                    shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed")
+                                    shareVisible: (dynamicContent.Website != undefined && dynamicContent.Website != null && dynamicContent.Website != "" ? "visible" : "collapsed"),
+                                    ShareLink: dynamicContent.Website,
+                                    FamilyFriendly: (dynamicContent.CategoryType.indexOf("5c4d6db0-e7a0-11e5-aab5-cde1ba39c7bc") >= 0 ? "visible" : "collapsed"),
+                                    LocalRestaurant: (dynamicContent.CategoryType.indexOf("2768c770-e7a0-11e5-aab5-cde1ba39c7bc") >= 0 ? "visible" : "collapsed")
+
+
                                 });
                             });
                             itemsList[args.index].visibility = "visible";
@@ -127,6 +131,8 @@ function onDetailItemTap(args) {
                     ShareLink: subItemData.ShareLink,
                     shareVisible: subItemData.shareVisible,
                     placeToEatImageUrl: data[0].Uri,
+                    FamilyFriendly:subItemData.FamilyFriendly,
+                    LocalRestaurant: subItemData.LocalRestaurant
                 });
                 viewModel.set('SubListItems', "");
                 viewModel.set('SubListItems', ChildItems);
